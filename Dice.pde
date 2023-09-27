@@ -1,6 +1,7 @@
 Die d1,d2,d3,d4,d5,d6,d7,d8,d9,d10;
 int cumulativeSum=0;
 int roundSum=0;
+int background=1;
 void setup()
 {
   size(500,500);
@@ -20,7 +21,32 @@ void setup()
 }
 void draw()
 {
-  background(80,140,250);
+  noStroke();
+  if(background==0){
+    noStroke();
+    background(80,140,250);
+    fill(150);
+    rect(0,0,500,60);
+    fill(0);
+    stroke(0);
+    strokeWeight(2);
+    line(0,60,500,60);
+    textSize(20);
+    text("Light Mode",80,38);
+  }
+  else if(background==1){
+    noStroke();
+    background(0,0,50);
+    fill(150);
+    rect(0,0,500,60);
+    fill(0);
+    stroke(0);
+    strokeWeight(2);
+    line(0,60,500,60);
+    textSize(20);
+    text("Dark Mode",80,38);
+  }
+  System.out.println(background);
   d1.roll();
   d1.show();
   d2.roll();
@@ -42,7 +68,10 @@ void draw()
   d10.roll();
   d10.show();
   textSize(20);
-  fill(0);
+  if(background==0)
+    fill(0);
+  else if(background==1)
+    fill(255);
   text("Round Sum: "+roundSum,250,400);
   text("Cumulative Sum: "+(cumulativeSum+roundSum),250,440);
   textSize(15);
@@ -56,9 +85,22 @@ void mousePressed()
 }
 void keyPressed()
 {
-  cumulativeSum+=roundSum;
-  redraw();
-  roundSum=0;
+  if(key==char('r')||key==char('R')){
+    roundSum=0;
+    cumulativeSum=0;
+    redraw();
+  }
+  if((key==char('n')||key==char('N'))&&(background==0)){
+    background=1;
+  }
+  if((key==char('m')||key==char('M'))&&(background==1)){
+    background=0;
+  }
+  if(keyCode==int(32)){
+    cumulativeSum+=roundSum;
+    redraw();
+    roundSum=0;
+  }
 }
 class Die //models one single dice cube
 {
