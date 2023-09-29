@@ -1,4 +1,3 @@
-Die d1,d2,d3,d4,d5,d6,d7,d8,d9,d10;
 int cumulativeSum=0;
 int roundSum=0;
 int background=1;
@@ -8,16 +7,6 @@ void setup()
   textAlign(CENTER);
   textSize(20);
   noLoop();
-  d1=new Die(25,150);
-  d2=new Die(125,150);
-  d3=new Die(225,150);
-  d4=new Die(325,150);
-  d5=new Die(425,150);
-  d6=new Die(25,275);
-  d7=new Die(125,275);
-  d8=new Die(225,275);
-  d9=new Die(325,275);
-  d10=new Die(425,275);
 }
 void draw()
 {
@@ -25,7 +14,7 @@ void draw()
   if(background==0){
     noStroke();
     background(80,140,250);
-    fill(150);
+    fill(220);
     rect(0,0,500,60);
     fill(0);
     stroke(0);
@@ -37,37 +26,23 @@ void draw()
   else if(background==1){
     noStroke();
     background(0,0,50);
-    fill(150);
+    fill(40);
     rect(0,0,500,60);
-    fill(0);
+    fill(250);
     stroke(0);
     strokeWeight(2);
     line(0,60,500,60);
     textSize(20);
     text("Dark Mode",80,38);
   }
-  System.out.println(background);
-  d1.roll();
-  d1.show();
-  d2.roll();
-  d2.show();
-  d3.roll();
-  d3.show();
-  d4.roll();
-  d4.show();
-  d5.roll();
-  d5.show();
-  d6.roll();
-  d6.show();
-  d7.roll();
-  d7.show();
-  d8.roll();
-  d8.show();
-  d9.roll();
-  d9.show();
-  d10.roll();
-  d10.show();
   textSize(20);
+  for(int y=150;y<=275;y+=125){
+    for(int x=25;x<=425;x+=100){
+      Die d=new Die(x,y);
+      d.roll();
+      d.show();
+    }
+  }
   if(background==0)
     fill(0);
   else if(background==1)
