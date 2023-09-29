@@ -36,7 +36,7 @@ void draw()
     text("Dark Mode",80,38);
   }
   textSize(20);
-  for(int y=150;y<=275;y+=125){
+  for(int y=100;y<=320;y+=100){
     for(int x=25;x<=425;x+=100){
       Die d=new Die(x,y);
       d.roll();
