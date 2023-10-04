@@ -1,9 +1,10 @@
 int cumulativeSum=0;
 int roundSum=0;
-int background=1;
+int background=0;
 void setup()
 {
   size(500,500);
+  background(80,140,250);
   textAlign(CENTER);
   textSize(20);
   noLoop();
@@ -94,56 +95,56 @@ class Die //models one single dice cube
     stroke(0);
     strokeWeight(2);
     fill(240,240,240);
-    rect(mX,mY,50,50);
+    rect(mX,mY,50,50,8);
     fill(0);
     textSize(18);
     if(dicenum==1){
-      ellipse(mX+25,mY+25,5,5);
+      ellipse(mX+25,mY+25,6,6);
       fill(185,0,0);
       text(dicenum,mX+25,mY+70);
       roundSum+=1;
     }
     else if(dicenum==2){
-      ellipse(mX+20,mY+25,5,5);
-      ellipse(mX+30,mY+25,5,5);
+      ellipse(mX+15,mY+25,6,6);
+      ellipse(mX+35,mY+25,6,6);
       fill(150,90,0);
       text(dicenum,mX+25,mY+70);
       roundSum+=2;
     }
     else if(dicenum==3){
-      ellipse(mX+15,mY+25,5,5);
-      ellipse(mX+25,mY+25,5,5);
-      ellipse(mX+35,mY+25,5,5);
+      ellipse(mX+15,mY+25,6,6);
+      ellipse(mX+25,mY+25,6,6);
+      ellipse(mX+35,mY+25,6,6);
       fill(150,130,0);
       text(dicenum,mX+25,mY+70);
       roundSum+=3;
     }
     else if(dicenum==4){
-      ellipse(mX+15,mY+15,5,5);
-      ellipse(mX+35,mY+15,5,5);
-      ellipse(mX+15,mY+35,5,5);
-      ellipse(mX+35,mY+35,5,5);
+      ellipse(mX+15,mY+15,6,6);
+      ellipse(mX+35,mY+15,6,6);
+      ellipse(mX+15,mY+35,6,6);
+      ellipse(mX+35,mY+35,6,6);
       fill(0,120,20);
       text(dicenum,mX+25,mY+70);
       roundSum+=4;
     }
     else if(dicenum==5){
-      ellipse(mX+15,mY+15,5,5);
-      ellipse(mX+35,mY+15,5,5);
-      ellipse(mX+25,mY+25,5,5);
-      ellipse(mX+15,mY+35,5,5);
-      ellipse(mX+35,mY+35,5,5);
+      ellipse(mX+15,mY+15,6,6);
+      ellipse(mX+35,mY+15,6,6);
+      ellipse(mX+25,mY+25,6,6);
+      ellipse(mX+15,mY+35,6,6);
+      ellipse(mX+35,mY+35,6,6);
       fill(0,50,160);
       text(dicenum,mX+25,mY+70);
       roundSum+=5;
     }
     else if(dicenum==6){
-      ellipse(mX+15,mY+15,5,5);
-      ellipse(mX+35,mY+15,5,5);
-      ellipse(mX+15,mY+25,5,5);
-      ellipse(mX+35,mY+25,5,5);
-      ellipse(mX+15,mY+35,5,5);
-      ellipse(mX+35,mY+35,5,5);
+      ellipse(mX+15,mY+15,6,6);
+      ellipse(mX+35,mY+15,6,6);
+      ellipse(mX+15,mY+25,6,6);
+      ellipse(mX+35,mY+25,6,6);
+      ellipse(mX+15,mY+35,6,6);
+      ellipse(mX+35,mY+35,6,6);
       fill(70,0,180);
       text(dicenum,mX+25,mY+70);
       roundSum+=6;
