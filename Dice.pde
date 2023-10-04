@@ -1,10 +1,11 @@
 int cumulativeSum=0;
 int roundSum=0;
-int background=0;
+int backgroundNum=0;
+int numRolls=1;
+
 void setup()
 {
   size(500,500);
-  background(80,140,250);
   textAlign(CENTER);
   textSize(20);
   noLoop();
@@ -12,29 +13,50 @@ void setup()
 void draw()
 {
   noStroke();
-  if(background==0){
+  if(backgroundNum==0){
     noStroke();
     background(80,140,250);
     fill(220);
     rect(0,0,500,60);
+    rect(0,500,500,-40);
+    quad(120,460,160,390,340,390,380,460);
     fill(0);
     stroke(0);
-    strokeWeight(2);
+    strokeWeight(1.5);
     line(0,60,500,60);
-    textSize(20);
-    text("Light Mode",80,38);
+    strokeWeight(1.5);
+    stroke(0);
+    line(0,460,120,460);
+    line(120,460,160,390);
+    line(160,390,340,390);
+    line(340,390,380,460);
+    line(380,460,500,460);
+    textSize(22);
+    text("Number of Rolls: "+numRolls,250,40);
+    textSize(15);
+    text("Light Mode",55,38);
   }
-  else if(background==1){
+  else if(backgroundNum==1){
     noStroke();
     background(0,0,50);
-    fill(40);
+    fill(20);
     rect(0,0,500,60);
+    rect(0,500,500,-40);
+    quad(120,460,160,390,340,390,380,460);
     fill(250);
-    stroke(0);
-    strokeWeight(2);
+    stroke(250);
+    strokeWeight(1.5);
     line(0,60,500,60);
-    textSize(20);
-    text("Dark Mode",80,38);
+    strokeWeight(1.5);
+    line(0,460,120,460);
+    line(120,460,160,390);
+    line(160,390,340,390);
+    line(340,390,380,460);
+    line(380,460,500,460);
+    textSize(22);
+    text("Number of Rolls: "+numRolls,250,40);
+    textSize(15);
+    text("Dark Mode",55,38);
   }
   textSize(20);
   for(int y=100;y<=320;y+=100){
@@ -44,20 +66,21 @@ void draw()
       d.show();
     }
   }
-  if(background==0)
+  if(backgroundNum==0)
     fill(0);
-  else if(background==1)
+  else if(backgroundNum==1)
     fill(255);
-  text("Round Sum: "+roundSum,250,400);
-  text("Cumulative Sum: "+(cumulativeSum+roundSum),250,440);
+  text("Round Sum: "+roundSum,250,420);
+  text("Cumulative Sum: "+(cumulativeSum+roundSum),250,455);
   textSize(15);
-  text("(This cumulative sum includes the current round sum amount.)",250,480);
+  text("(This cumulative sum includes the current round sum amount.)",250,485);
 }
 void mousePressed()
 {
   cumulativeSum+=roundSum;
   redraw();
   roundSum=0;
+  numRolls+=1;
 }
 void keyPressed()
 {
@@ -65,17 +88,19 @@ void keyPressed()
     roundSum=0;
     cumulativeSum=0;
     redraw();
+    numRolls=1;
   }
-  if((key==char('n')||key==char('N'))&&(background==0)){
-    background=1;
+  if((key==char('n')||key==char('N'))&&(backgroundNum==0)){
+    backgroundNum=1;
   }
-  if((key==char('m')||key==char('M'))&&(background==1)){
-    background=0;
+  if((key==char('m')||key==char('M'))&&(backgroundNum==1)){
+    backgroundNum=0;
   }
   if(keyCode==int(32)){
     cumulativeSum+=roundSum;
     redraw();
     roundSum=0;
+    numRolls+=1;
   }
 }
 class Die //models one single dice cube
