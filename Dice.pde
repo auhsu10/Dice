@@ -84,19 +84,19 @@ void mousePressed()
 }
 void keyPressed()
 {
-  if(key==char('r')||key==char('R')){
+  if(key=='r'||key=='R'){
     roundSum=0;
     cumulativeSum=0;
     redraw();
     numRolls=1;
   }
-  if((key==char('n')||key==char('N'))&&(backgroundNum==0)){
+  if((key=='n'||key=='N')&&(backgroundNum==0)){
     backgroundNum=1;
   }
-  if((key==char('m')||key==char('M'))&&(backgroundNum==1)){
+  if((key=='m'||key=='M')&&(backgroundNum==1)){
     backgroundNum=0;
   }
-  if(keyCode==int(32)){
+  if(keyCode==32){
     cumulativeSum+=roundSum;
     redraw();
     roundSum=0;
